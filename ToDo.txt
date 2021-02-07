@@ -1,0 +1,14 @@
+COMMANDS:
+
+clear
+ban
+kick
+info
+survey
+...
+
+FEATURES:
+
+"reaction role" for rules and user role
+ticket system
+auto mod -> censor bad words

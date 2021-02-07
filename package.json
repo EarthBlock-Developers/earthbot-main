@@ -1,0 +1,25 @@
+{
+  "name": "earthbot-main",
+  "version": "1.0.0",
+  "description": "The main EarthBot Bot for EarthBlock Network",
+  "main": "main.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sachsenspielt96/earthblock-main.git"
+  },
+  "author": "Sachsenspiel",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Sachsenspielt96/earthblock-main/issues"
+  },
+  "homepage": "https://github.com/Sachsenspielt96/earthblock-main#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
