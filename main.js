@@ -8,8 +8,6 @@ const PREFIX = require('./settings').variables.PREFIX;
 const TOKEN = require('./settings').variables.TOKEN;
 const DATE = new Date();
 
-let reactionRoleRule = undefined;
-
 //SAVE IMPORTANT VARIABLES TO CLIENT
 bot.PREFIX = PREFIX;
 
@@ -19,7 +17,8 @@ bot.on("ready", () => {
     console.log(`[/start] [${DATE.getHours()}:${DATE.getMinutes()}] Logged in successful to ` + bot.user.tag);
     bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
 
-    reactionRoleRule = bot.guilds.cache.get("740571881014558790").channels.cache.get("740572760782143573").messages.fetch("807923274729127957");
+    //CACHE REACTION ROLE MESSAGE FROM #RULES
+    bot.guilds.cache.get("740571881014558790").channels.cache.get("740572760782143573").messages.fetch("807923274729127957");
 
 });
 
@@ -66,15 +65,13 @@ bot.on("message", message => {
 //REACTION ROLE FOR #RULES
 bot.on("messageReactionAdd", (reaction, user) => {
 
-    if (reaction.message.id === "807923274729127957" && reaction.emoji.name === "white_check_mark") {
+    if (reaction.message.id === "807923274729127957" && reaction.emoji.name === "✅") {
 
-        let member = guild.members.cache.get(user.id);
+        let member = reaction.message.guild.members.cache.get(user.id);
         member.roles.add("807672663819943937");
         reaction.users.remove(user.id);
 
     }
-
-
 
 })
 
