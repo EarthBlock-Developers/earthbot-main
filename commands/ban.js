@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 module.exports.run = async (msg, args, bot) => {
 
     //CHECK PERMISSION
-    if (!msg.member.permissions.has("MANAGE_MESSAGES")) {
+    if (!msg.member.permissions.has("BAN_MEMBERS")) {
 
         return msg.channel.send(new Discord.MessageEmbed()
             .setTitle("Hier ist etwas schief gelaufen!")
@@ -26,37 +26,49 @@ module.exports.run = async (msg, args, bot) => {
 
     }
 
-    //CHECK IF ARGS IS NUMBER
-    if (parseInt(args[0]) <= 0) {
+    //CHECK IF ARGS[0] IS MENTION
+    if (!msg.mentions.members.first()) {
         return msg.channel.send(new Discord.MessageEmbed()
             .setTitle("Hier ist etwas schief gelaufen!")
             .setColor("RED")
-            .setDescription("Der angegebene Parameter `" + args[0] + "` ist keine Zahl über 0! Bitte überprüfe die Eingabe!\nUsage: " + bot.PREFIX + this.help.name + " " + this.help.usage)
+            .setDescription("Der angegebene Parameter `" + args[0] + "` ist keine Mention! Bitte überprüfe die Eingabe!\nUsage: " + bot.PREFIX + this.help.name + " " + this.help.usage)
             .setFooter(msg.content.split(" ")[0] + " | Befehl ausgeführt durch " + msg.author.tag));
 
     }
 
-    if (parseInt(args[0]) > 99) args[0] = 99;
+    //BUILD EMBED FOR USER
+    let embed = new Discord.MessageEmbed()
+        .setTitle("Du wurdest gebannt!")
+        .setColor("RED")
+        .setThumbnail(msg.guild.iconURL())
+        .setFooter("©2021 EarthBlock Network")
+        .addField("Server", msg.guild.name)
+        .addField("Gebannt durch", msg.author.tag)
 
-    //DELETE MESSAGES
-    await msg.channel.bulkDelete(parseInt(args[0]) + 1, true).then(deleted => {
+    if(args.slice(1).join(" ")) {
+        embed.addField("Grund", args.slice(1).join(" "));
+    } else {
+        embed.addField("Grund", "Kein Grund angegeben");
+    }
 
-        let botmessage = msg.channel.send(new Discord.MessageEmbed()
-            .setTitle("Nachrichten Erfolgreich gelöscht")
-            .setDescription("Es wurden erfolgreich `" + (deleted.size - 1) + "` Nachrichten gelöscht!")
-            .setFooter(msg.content.split(" ")[0] + " | Befehl ausgeführt durch " + msg.author.tag)
-            .setColor("GREEN")).then(m => m.delete({timeout: 3000}));
+    embed.addField("Datum", new Date().getDate() + "." + new Date().getMonth() + "." + new Date().getFullYear() + " " + new Date().getHours() + ":" + new Date().getMinutes());
 
-    })
+    //SEND EMBED TO USER AND KICK HIM
+    let member = msg.mentions.members.first();
 
+    await member.send(embed);
+    await member.ban({ reason: args.slice(1).join(" ") });
+
+    //SEND EMBED TO SERVER
+    await msg.channel.send(embed);
 }
 
 //PROPERTIES FOR /HELP
 module.exports.help = {
 
-    name: "clear",
-    description: "Löscht bis zu 100 Nachrichten, die nicht älter wie 14 Tage sind.",
-    usage: "<int amount>",
-    permission: "MANAGE_MESSAGES"
+    name: "ban",
+    description: "Bannt einen Nutzer vom Server",
+    usage: "<mention user> <string reason>",
+    permission: "BAN_MEMBERS"
 
 }
