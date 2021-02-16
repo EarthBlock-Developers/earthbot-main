@@ -7,6 +7,7 @@ const bot = new Discord.Client();
 const PREFIX = require('./settings').variables.PREFIX;
 const TOKEN = require('./settings').variables.TOKEN;
 const DATE = new Date();
+let service = require('./settings').variables.SERVICE;
 
 //SAVE IMPORTANT VARIABLES TO CLIENT
 bot.PREFIX = PREFIX;
@@ -34,6 +35,26 @@ bot.on("message", message => {
 
     if(message.author.bot) return undefined;
     if(message.channel.type === "dm") return undefined;
+    if(message.channel.id === "740571881014558793") return undefined;
+    if(!message.content.startsWith(PREFIX)) return undefined;
+
+    if(cmd === "service") {
+
+        //if(!message.member.roles.cache.has("807670780644032552")) return;
+        if(messageArray[0] === "on") serviceOn();
+        if(messageArray[0] === "off") serviceOff();
+        return true;
+
+    }
+
+    if(service) {
+        let embed = new Discord.MessageEmbed()
+            .setTitle("Wartungsarbeiten!")
+            .setDescription("Aufgrund von Wartungsarbeiten ist der Bot temporär nicht verfügbar und ist auf wenige Features beschrängt!")
+            .setColor("RED");
+        message.channel.send(embed);
+        return;
+    }
 
     try {
 
@@ -74,6 +95,40 @@ bot.on("messageReactionAdd", (reaction, user) => {
     }
 
 })
+
+function serviceOn() {
+
+    service = true;
+    const SETTINGS = require("./settings");
+    let json = {
+
+        TOKEN: "" + SETTINGS.variables.TOKEN,
+        PREFIX: "" + SETTINGS.variables.PREFIX,
+        SERVICE: service
+
+    }
+
+    fs.writeFileSync("settings.js", "module.exports.variables = " + JSON.stringify(json, null, 2).toString());
+
+    bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => { return true });
+}
+
+function serviceOff() {
+
+    service = false;
+    const SETTINGS = require("./settings");
+    let json = {
+
+        TOKEN: "" + SETTINGS.variables.TOKEN,
+        PREFIX: "" + SETTINGS.variables.PREFIX,
+        SERVICE: service
+
+    }
+
+    fs.writeFileSync("settings.js", "module.exports.variables = " + JSON.stringify(json, null, 2).toString());
+
+    bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
+}
 
 //BOT LOGIN
 bot.login(TOKEN);

@@ -18,7 +18,8 @@
   "homepage": "https://github.com/Sachsenspielt96/earthblock-main#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "nodeactyl": "^2.0.5"
   },
   "devDependencies": {},
   "keywords": []

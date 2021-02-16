@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e560db6f-ba8b-4fd1-a236-6d70fb5ddd42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commands/ban.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/kick.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/status.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/umfrage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/clear.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/clear.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/settings.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,21 +53,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,6 +65,12 @@
       <updated>1612709792157</updated>
       <workItem from="1612709794361" duration="6564000" />
       <workItem from="1612775536200" duration="4015000" />
+      <workItem from="1613120693447" duration="84000" />
+      <workItem from="1613124017936" duration="19000" />
+      <workItem from="1613320122752" duration="1943000" />
+      <workItem from="1613377866952" duration="3568000" />
+      <workItem from="1613390619320" duration="1249000" />
+      <workItem from="1613397622549" duration="4317000" />
     </task>
     <servers />
   </component>

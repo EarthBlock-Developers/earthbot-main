@@ -1,14 +1,20 @@
 COMMANDS:
 
-clear
-ban
-kick
+clear       ✔
+ban         ✔
+kick        ✔
 info
-survey
+survey      ✔
+service
 ...
 
 FEATURES:
 
-"reaction role" for rules and user role
+"reaction role" for rules and user role         ✔
 ticket system
 auto mod -> censor bad words
+service mode -> block every event
+
+BUGS:
+
+bot response to welcome messages from discord   ✔
