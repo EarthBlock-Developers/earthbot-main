@@ -16,7 +16,10 @@ bot.PREFIX = PREFIX;
 bot.on("ready", () => {
 
     console.log(`[/start] [${DATE.getHours()}:${DATE.getMinutes()}] Logged in successful to ` + bot.user.tag);
-    bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
+
+    //SET STATUS => SERVICE
+    if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => { return true });
+    else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
 
     //CACHE REACTION ROLE MESSAGE FROM #RULES
     bot.guilds.cache.get("740571881014558790").channels.cache.get("740572760782143573").messages.fetch("807923274729127957");
@@ -41,8 +44,8 @@ bot.on("message", message => {
     if(cmd === "service") {
 
         //if(!message.member.roles.cache.has("807670780644032552")) return;
-        if(messageArray[0] === "on") serviceOn();
-        if(messageArray[0] === "off") serviceOff();
+        if(messageArray[0] === "on") serviceOn(message);
+        if(messageArray[0] === "off") serviceOff(message);
         return true;
 
     }
@@ -96,7 +99,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
 
 })
 
-function serviceOn() {
+function serviceOn(message) {
 
     service = true;
     const SETTINGS = require("./settings");
@@ -110,10 +113,11 @@ function serviceOn() {
 
     fs.writeFileSync("settings.js", "module.exports.variables = " + JSON.stringify(json, null, 2).toString());
 
+    message.delete();
     bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => { return true });
 }
 
-function serviceOff() {
+function serviceOff(message) {
 
     service = false;
     const SETTINGS = require("./settings");
@@ -127,6 +131,7 @@ function serviceOff() {
 
     fs.writeFileSync("settings.js", "module.exports.variables = " + JSON.stringify(json, null, 2).toString());
 
+    message.delete();
     bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
 }
 
