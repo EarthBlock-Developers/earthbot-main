@@ -1,7 +1,8 @@
 //INIT LIBRARIES
 const Discord = require('discord.js');
 const Pterodactyl = require('nodeactyl-beta');
-const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", "BwELET7P7BbEdwnB0O1K8fNUFAmvOacZMvY4CUITWpMnrTwZ");
+const SETTINGS = require("../settings");
+const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", SETTINGS.variables.TOKEN.PTERODACTYL);
 
 //CODE THAT RUNS ON EVERY USAGE
 module.exports.run = async (msg, args, bot) => {
@@ -11,6 +12,7 @@ module.exports.run = async (msg, args, bot) => {
     let maxRam = 1;
     let nowRam = 1;
     let status = "no_connection"
+    console.log(JSON.stringify(SETTINGS.variables.TOKEN))
 
     //LOGIN TO GET SERVER INFO
     await mc_server.getServerUsages("a89ccb98").then(result => {

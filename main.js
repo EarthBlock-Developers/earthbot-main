@@ -5,7 +5,7 @@ const fs = require('fs');
 //INIT VARIABLES
 const bot = new Discord.Client();
 const PREFIX = require('./settings').variables.PREFIX;
-const TOKEN = require('./settings').variables.TOKEN;
+const TOKEN = require('./settings').variables.TOKEN.DISCORD;
 const DATE = new Date();
 let service = require('./settings').variables.SERVICE;
 
@@ -105,7 +105,10 @@ function serviceOn(message) {
     const SETTINGS = require("./settings");
     let json = {
 
-        TOKEN: "" + SETTINGS.variables.TOKEN,
+        TOKEN: {
+            DISCORD: "" + SETTINGS.variables.TOKEN.DISCORD,
+            PTERODACTYL: "" + SETTINGS.variables.TOKEN.PTERODACTYL
+        },
         PREFIX: "" + SETTINGS.variables.PREFIX,
         SERVICE: service
 
@@ -123,7 +126,10 @@ function serviceOff(message) {
     const SETTINGS = require("./settings");
     let json = {
 
-        TOKEN: "" + SETTINGS.variables.TOKEN,
+        TOKEN: {
+            DISCORD: "" + SETTINGS.variables.TOKEN.DISCORD,
+            PTERODACTYL: "" + SETTINGS.variables.TOKEN.PTERODACTYL
+        },
         PREFIX: "" + SETTINGS.variables.PREFIX,
         SERVICE: service
 
