@@ -8,7 +8,7 @@ const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", S
 module.exports.run = async (msg, args, bot) => {
 
     //CHECK PERMS AND ARGS
-    if(!msg.member.permissions.has("ADMINISTRATOR")) return msg.delete();
+    if(!msg.member.permissions.has("PRIORITY_SPEAKER")) return msg.delete();
     if(!args[0]) return msg.delete();
 
     //MANAGE SERVER
@@ -48,6 +48,6 @@ module.exports.help = {
     name: "minecraft",
     description: "Steuert den Minecraft Server",
     usage: "<start | stop | restart | kill>",
-    permission: "ADMINISTRATOR"
+    permission: "PRIORITY_SPEAKER"
 
 }

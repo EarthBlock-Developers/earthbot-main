@@ -18,11 +18,7 @@ module.exports.run = async (msg, args, bot) => {
     //CHECK IF THERE IS ARGS
     if (!args[0]) {
 
-        return msg.channel.send(new Discord.MessageEmbed()
-            .setTitle("Hier ist etwas schief gelaufen!")
-            .setColor("RED")
-            .setDescription("Der angegebene Parameter ` ` ist keine Zahl! Bitte überprüfe die Eingabe!\nUsage: " + bot.PREFIX + this.help.name + " " + this.help.usage)
-            .setFooter(msg.content.split(" ")[0] + " | Befehl ausgeführt durch " + msg.author.tag));
+        args[0] = 100;
 
     }
 
