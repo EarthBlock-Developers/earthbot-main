@@ -11,8 +11,7 @@ module.exports.run = async (msg, args, bot) => {
     let cpu = 1;
     let maxRam = 1;
     let nowRam = 1;
-    let status = "no_connection"
-    console.log(JSON.stringify(SETTINGS.variables.TOKEN))
+    let status = "no_connection";
 
     //LOGIN TO GET SERVER INFO
     await mc_server.getServerUsages("a89ccb98").then(result => {
@@ -29,7 +28,8 @@ module.exports.run = async (msg, args, bot) => {
 
     })
 
-    let ram = (nowRam / maxRam).toFixed(4);
+    let ram = Math.round(((nowRam / maxRam) + Number.EPSILON) * 100) / 100;
+    cpu = Math.round((cpu + Number.EPSILON) * 100) / 100;
 
     //FUNCTION: "MAKEPROGRESSBAR" FOR USAGE FROM SERVER IN EMBED
     function makeProgressbar(value) {
