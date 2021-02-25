@@ -10,12 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/Sachsenspielt96/earthblock-main.git"
   },
-  "author": "Sachsenspiel",
+  "author": "Sachsenspielt",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Sachsenspielt96/earthblock-main/issues"
+    "url": "https://github.com/earthblock-developers/earthbot-main/issues"
   },
-  "homepage": "https://github.com/Sachsenspielt96/earthblock-main#readme",
+  "homepage": "https://github.com/Sachsenspielt96/earthbot-main#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
