@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e560db6f-ba8b-4fd1-a236-6d70fb5ddd42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commands/mccmd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/delcache.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/info.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/serverinfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/minecraft.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/minecraft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/status.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/status.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,7 @@
       <workItem from="1613980159341" duration="6605000" />
       <workItem from="1614084647035" duration="2206000" />
       <workItem from="1614101762489" duration="647000" />
-      <workItem from="1614255424829" duration="5443000" />
+      <workItem from="1614255424829" duration="8117000" />
     </task>
     <servers />
   </component>
