@@ -38,16 +38,12 @@ bot.on("message", message => {
 
     let messageArray = message.content.split(" ").slice(1);
     let cmd = message.content.split(" ")[0].toLowerCase().replace(PREFIX, "").toLowerCase();
-
     let log = `[/cmd] [${DATE.getHours()}:${DATE.getMinutes()}] The user ${message.author.tag} tried to use ${cmd}: `;
-
     if(message.author.bot) return undefined;
     if(message.channel.type === "dm") return undefined;
-    if(!message.content.toLowerCase().startsWith(PREFIX)) return undefined;
 
-    if(cmd === "service") {
+    if(cmd === "service" && message.member.roles.cache.has("807670780644032552")) {
 
-        //if(!message.member.roles.cache.has("807670780644032552")) return;
         if(messageArray[0] === "on") serviceOn(message);
         if(messageArray[0] === "off") serviceOff(message);
         return true;
@@ -60,31 +56,82 @@ bot.on("message", message => {
             .setDescription("Aufgrund von Wartungsarbeiten ist der Bot temporär nicht verfügbar und ist auf wenige Features beschrängt!")
             .setColor("RED");
         message.channel.send(embed);
-        return;
     }
 
-    try {
+    if(message.content.toLowerCase().startsWith(PREFIX) && !service) {
+        try {
 
-        let cmdfile = require("./commands/" + cmd);
-        cmdfile.run(message, messageArray, bot).then(() => {
+            let cmdfile = require("./commands/" + cmd);
+            cmdfile.run(message, messageArray, bot).then(() => {
 
-            delete require.cache[require.resolve('./commands/' + cmd)];
+                delete require.cache[require.resolve('./commands/' + cmd)];
 
-        });
-        log = log + "success";
+            });
+            log = log + "success";
 
-    } catch (error) {
+        } catch (error) {
 
-        log = log + "error";
-        let embed = new Discord.MessageEmbed()
-            .setColor("RED")
-            .setTitle("Hier ist etwas schiefgelaufen...")
-            .setDescription(`Der eingegebene Befehl \`${cmd}\` konnte nicht gefunden werden!\n Vielleicht hilft dir \`${PREFIX}help\` weiter?`);
-        message.channel.send(embed);
+            log = log + "error";
+            let embed = new Discord.MessageEmbed()
+                .setColor("RED")
+                .setTitle("Hier ist etwas schiefgelaufen...")
+                .setDescription(`Der eingegebene Befehl \`${cmd}\` konnte nicht gefunden werden!\n Vielleicht hilft dir \`${PREFIX}help\` weiter?`);
+            message.channel.send(embed);
 
-    } finally {
+        } finally {
 
-        console.log(log);
+            console.log(log);
+
+        }
+    }
+
+    // CENSOR BAD WORDS //
+    if(message) {
+        let badWordsArray = require("./db/bad_words.json"); //https://ethercalc.net/xhu0zrac90ib
+        let messageLetters = message.content.replace(/\s+/g, '');
+        messageLetters = messageLetters.split("");
+        let boolean = true;
+
+        //CHECKING EACH LETTER++ WITH BAD WORDS
+        messageLetters.forEach((letter, i) => {
+            let testingString = messageLetters.slice(i).join("").toLowerCase();
+            for (let j = 0; j < badWordsArray.length; j++) {
+                if(testingString.startsWith(badWordsArray[j].toLowerCase().replace(/\s+/g, ''))) boolean = false;
+            }
+        })
+
+        //DELETE EVERYTHING
+        delete require.cache[require.resolve("./db/bad_words.json")];
+
+        if(!boolean) {
+            //SEND MESSAGE TO USER AND BOT-REPORT
+            let embed = new Discord.MessageEmbed()
+                .setTitle("Sicherheitsmeldung")
+                .setDescription("Eine Nachricht von dir wurde gelöscht:")
+                .addField("Server", message.guild.name)
+                .addField("Grund", "Schimpfwort")
+                .addField("Nachricht", message.content)
+                .addField("Gelöscht durch", bot.user.tag)
+                .setColor("RED")
+                .setTimestamp(new Date());
+            message.member.send(embed);
+
+            let botChannel = message.guild.channels.cache.get("814482685551575061");
+            try {
+                botChannel.send("<@&807670565401002075>");
+                botChannel.send(new Discord.MessageEmbed()
+                    .setTitle("Sicherheitsmeldung")
+                    .setDescription("Eine Nachricht wurde automatisiert gelöscht:")
+                    .addField("Grund", "Schimpfwort")
+                    .addField("Nachricht", message.content)
+                    .addField("Autor", message.author.tag)
+                    .setColor("RED")
+                    .setTimestamp(new Date()));
+            } catch (e) {
+
+            }
+            message.delete();
+        }
 
     }
 
