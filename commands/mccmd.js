@@ -31,7 +31,7 @@ module.exports.run = async (msg, args, bot) => {
 
     //SEND COMMAND AND LOOK WHATS HAPPEN
     await mc_server.sendServerCommand("a89ccb98", args.join(" ")).then(response => {
-        if(response) msg.react("✅") else msg.react("❌");
+        if(response) { msg.react("✅"); } else { msg.react("❌"); }
     })
 
 }
