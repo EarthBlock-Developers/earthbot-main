@@ -113,6 +113,7 @@ function serviceOn(message) {
             DISCORD: "" + SETTINGS.variables.TOKEN.DISCORD,
             PTERODACTYL: "" + SETTINGS.variables.TOKEN.PTERODACTYL
         },
+        SERVER_ID: SETTINGS.variables.SERVER_ID,
         PREFIX: "" + SETTINGS.variables.PREFIX,
         SERVICE: service
 
@@ -134,6 +135,7 @@ function serviceOff(message) {
             DISCORD: "" + SETTINGS.variables.TOKEN.DISCORD,
             PTERODACTYL: "" + SETTINGS.variables.TOKEN.PTERODACTYL
         },
+        SERVER_ID: SETTINGS.variables.SERVER_ID,
         PREFIX: "" + SETTINGS.variables.PREFIX,
         SERVICE: service
 
@@ -262,6 +264,7 @@ function minecraft_stats() {
         let channel_status = channels.get("813348406726098984");
         let channel_cpu = channels.get("813348433922359357");
         let channel_ram = channels.get("813348457745219584");
+        const SETTINGS = require("./settings");
 
         //VARIABLES FROM PTERODACTYL -> NORMAL STATES WHEN NO ANSWER FROM PTERODACTYL
         let cpu = 1;
@@ -271,7 +274,7 @@ function minecraft_stats() {
         let name = "no_connection";
 
         //LOGIN TO GET SERVER INFO
-        await mc_server.getServerUsages("a89ccb98").then(result => {
+        await mc_server.getServerUsages(SETTINGS.variables.SERVER_ID).then(result => {
 
             cpu = result.resources.cpu_absolute;
             nowRam = (result.resources.memory_bytes / (1024*1024)).toFixed(0);
@@ -279,7 +282,7 @@ function minecraft_stats() {
 
         });
 
-        await mc_server.getServerDetails("a89ccb98").then(result => {
+        await mc_server.getServerDetails(SETTINGS.variables.SERVER_ID).then(result => {
 
             maxRam = result.limits.memory;
             name = result.name;

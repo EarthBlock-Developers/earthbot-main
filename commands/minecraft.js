@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const Pterodactyl = require("nodeactyl-beta");
 const SETTINGS = require("../settings");
-const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", SETTINGS.variables.TOKEN.PTERODACTYL)
+const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", SETTINGS.variables.TOKEN.PTERODACTYL);
 
 //CODE THAT RUNS ON EVERY USAGE
 module.exports.run = async (msg, args, bot) => {
@@ -15,22 +15,22 @@ module.exports.run = async (msg, args, bot) => {
     switch (args[0]) {
 
         case "start":
-            await mc_server.startServer("a89ccb98");
+            await mc_server.startServer(SETTINGS.variables.SERVER_ID);
             await msg.react("✅");
             break;
 
         case "stop":
-            await mc_server.stopServer("a89ccb98");
+            await mc_server.stopServer(SETTINGS.variables.SERVER_ID);
             await msg.react("✅");
             break;
 
         case "restart":
-            await mc_server.restartServer("a89ccb98");
+            await mc_server.restartServer(SETTINGS.variables.SERVER_ID);
             await msg.react("✅");
             break;
 
         case "kill":
-            await mc_server.killServer("a89ccb98");
+            await mc_server.killServer(SETTINGS.variables.SERVER_ID);
             await msg.react("✅");
             break;
 

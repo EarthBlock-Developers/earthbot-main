@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e560db6f-ba8b-4fd1-a236-6d70fb5ddd42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commands/tclose.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/mccmd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/minecraft.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/minecraft.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/status.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/status.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,12 +47,17 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.15.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.25" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/commands" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Finn\Documents\GitHub\earthbot-main\commands" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -96,7 +103,7 @@
       <workItem from="1613980159341" duration="6605000" />
       <workItem from="1614084647035" duration="2206000" />
       <workItem from="1614101762489" duration="647000" />
-      <workItem from="1614255424829" duration="4190000" />
+      <workItem from="1614255424829" duration="5443000" />
     </task>
     <servers />
   </component>

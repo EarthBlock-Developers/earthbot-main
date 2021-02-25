@@ -14,7 +14,7 @@ module.exports.run = async (msg, args, bot) => {
     let status = "no_connection";
 
     //LOGIN TO GET SERVER INFO
-    await mc_server.getServerUsages("a89ccb98").then(result => {
+    await mc_server.getServerUsages(SETTINGS.variables.SERVER_ID).then(result => {
 
         cpu = result.resources.cpu_absolute;
         nowRam = (result.resources.memory_bytes / (1024*1024)).toFixed(0);
@@ -22,7 +22,7 @@ module.exports.run = async (msg, args, bot) => {
 
     });
 
-    await mc_server.getServerDetails("a89ccb98").then(result => {
+    await mc_server.getServerDetails(SETTINGS.variables.SERVER_ID).then(result => {
 
         maxRam = result.limits.memory;
 
