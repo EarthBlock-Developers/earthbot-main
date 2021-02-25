@@ -37,13 +37,13 @@ bot.on("ready", () => {
 bot.on("message", message => {
 
     let messageArray = message.content.split(" ").slice(1);
-    let cmd = message.content.split(" ")[0].replace(PREFIX, "").toLowerCase();
+    let cmd = message.content.split(" ")[0].toLowerCase().replace(PREFIX, "").toLowerCase();
 
     let log = `[/cmd] [${DATE.getHours()}:${DATE.getMinutes()}] The user ${message.author.tag} tried to use ${cmd}: `;
 
     if(message.author.bot) return undefined;
     if(message.channel.type === "dm") return undefined;
-    if(!message.content.startsWith(PREFIX)) return undefined;
+    if(!message.content.toLowerCase().startsWith(PREFIX)) return undefined;
 
     if(cmd === "service") {
 
@@ -184,6 +184,62 @@ bot.on("guildMemberRemove", member => {
     member.guild.channels.cache.get("813339425882898432").setName("Members: " + member.guild.memberCount);
 
 })
+
+// SUPPORT TICKET SYSTEM //
+bot.on('voiceStateUpdate', (oldMember, newMember) => {
+    let voiceChannel = newMember.channel;
+
+    if(!voiceChannel) return;
+
+    if(voiceChannel.id === "814471565852540938") {
+        voiceChannel.guild.channels.create("ticket-" + generateTicketID(5), {
+            type: "text",
+            parent: voiceChannel.guild.channels.cache.get("814477342277500988")
+        }).then(r => {
+            newMember.member.voice.kick();
+            r.overwritePermissions([{
+                //ADD USER TO TICKET
+                id: newMember.member.id,
+                allow: ["SEND_MESSAGES", "VIEW_CHANNEL"]
+            },{
+                //ADD TEAM TO TICKET
+                id: "807670565401002075",
+                allow: ["SEND_MESSAGES", "VIEW_CHANNEL"]
+            },{
+                //DENY EVERYONE TO TICKET
+                id: newMember.member.guild.roles.everyone.id,
+                deny: ["SEND_MESSAGES", "VIEW_CHANNEL"]
+            }]);
+
+            newMember.member.send("Dein Ticket wurde erfolgreich eröffnet! Du findest es hier -> <#" + r + ">");
+
+            let reportChannel = voiceChannel.guild.channels.cache.get("814482685551575061");
+            reportChannel.send("<@&807670565401002075> Der User <@" + newMember.member.id + "> hat ein Ticket eröffnet! <#" + r + ">");
+
+            //START MESSAGE IN TICKET
+            let channel = r.guild.channels.cache.get(r.id);
+            channel.send(new Discord.MessageEmbed()
+                .setTitle("Willkommen im " + channel.guild.name + " Support")
+                .addField("---", "Bitte beschreibe in diesem Channel dein Problem genau, damit dir unser Team helfen kann.")
+                .addField("---", "Achte dabei dass du alle wichtigen Faktoren mit einbeziehst und halte dich sachlich!")
+                .addField("---", "Je mehr Infos das Team bekommt, desto besser können wir die helfen.")
+                .addField("---", "Unser Team wird dir in Kürze auf dein Problem antworten!")
+                .setThumbnail(channel.guild.iconURL())
+                .setTimestamp(new Date())
+                .setFooter("Ticket System by " + bot.user.username));
+        })
+    }
+})
+
+function generateTicketID(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
 
 // SERVER STATS //
 
