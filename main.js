@@ -296,8 +296,6 @@ function minecraft_stats() {
     setInterval(() => {
 
         updateChannel();
-        if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => { return true });
-        else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
 
     }, 60000 * 5)
 
@@ -341,6 +339,9 @@ function minecraft_stats() {
         await channel_status.setName(status);
         await channel_cpu.setName("CPU: " + cpu + "%");
         await channel_ram.setName("RAM: " + ram + "%");
+
+        if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => {  });
+        else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network | Prefix: " + PREFIX, type: "PLAYING" } }).then(() => {  });
 
     }
 
