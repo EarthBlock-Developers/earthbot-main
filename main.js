@@ -19,10 +19,6 @@ bot.on("ready", () => {
 
     console.log(`[/start] [${DATE.getHours()}:${DATE.getMinutes()}] Logged in successful to ` + bot.user.tag);
 
-    //SET STATUS => SERVICE
-    if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => { return true });
-    else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
-
     //CACHE REACTION ROLE MESSAGE FROM #RULES
     bot.guilds.cache.get("740571881014558790").channels.cache.get("740572760782143573").messages.fetch("807923274729127957");
 
@@ -300,8 +296,10 @@ function minecraft_stats() {
     setInterval(() => {
 
         updateChannel();
+        if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => { return true });
+        else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network", type: "PLAYING" } }).then(() => { return true });
 
-    }, 300000)
+    }, 60000 * 5)
 
     async function updateChannel() {
 
