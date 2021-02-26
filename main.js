@@ -340,8 +340,8 @@ function minecraft_stats() {
         await channel_cpu.setName("CPU: " + cpu + "%");
         await channel_ram.setName("RAM: " + ram + "%");
 
-        if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => {  });
-        else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network | Prefix: " + PREFIX, type: "PLAYING" } }).then(() => {  });
+        if(service) await bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => {  });
+        else await bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network | Prefix: " + PREFIX, type: "PLAYING" } }).then(() => {  });
 
     }
 
