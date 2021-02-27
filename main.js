@@ -205,9 +205,6 @@ bot.on("guildMemberAdd", member => {
 
     member.guild.systemChannel.send(embed);
 
-    //UPDATE SERVER STATS
-    member.guild.channels.cache.get("813339425882898432").setName("Members: " + member.guild.memberCount);
-
 })
 
 //QUIT EVENT -> MESSAGE AND UPDATE STAT CHANNEL
@@ -224,9 +221,6 @@ bot.on("guildMemberRemove", member => {
         .setFooter("Usercount: " + member.guild.memberCount);
 
     member.guild.systemChannel.send(embed);
-
-    //UPDATE SERVER STATS
-    member.guild.channels.cache.get("813339425882898432").setName("Members: " + member.guild.memberCount);
 
 })
 
