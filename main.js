@@ -205,6 +205,25 @@ bot.on("guildMemberAdd", member => {
 
     member.guild.systemChannel.send(embed);
 
+    //SEND USER INFO FROM SERVER
+    member.send("**WILLKOMMEN AUF DEM EARTHBLOCK NETWORK DISCORD SERVER**\n" +
+        "\n" +
+        "Herzlich Willkommen, schön dass du da bist! Damit du dich schnell zurecht finden kannst findest du hier alle wichtigen Infos hier aufgeschlüsselt!\n" +
+        "\n" +
+        "_Warum sehe ich nur so wenig Channel?_\n" +
+        "Das liegt vermutlich daran, dass du unsere Regeln noch nicht akzeptiert hast! Gehe dazu in <#740572760782143573> und klicke auf den grünen Hacken (✅) und du bekommst automatisch deine Userrolle zugewiesen!\n" +
+        "\n" +
+        "_Ich habe was von einem Filmprojekt gehört?_\n" +
+        "Wenn du interessiert bist, an unserem Filmprojekt teilzunehmen, kannst du dich gerne Bewerben! Nutze dazu folgenden Link: https://earthblock-network.me/r/bewerben\n" +
+        "Weitere Infos zum Projekt \"EarthBlock Studio\" findest du unter https://www.earthblock-network.me/earthblock-studio\n" +
+        "\n" +
+        "_Social Media Links_\n" +
+        "Twitter: https://earthblock-network.me/r/twitter\n" +
+        "Instagram: https://earthblock-network.me/r/instagram\n" +
+        "GitHub: https://earthblock-network.me/r/github\n" +
+        "YouTube: https://earthblock-network.me/r/youtube\n" +
+        "Website: https://www.earthblock.network.me/")
+
 })
 
 //QUIT EVENT -> MESSAGE AND UPDATE STAT CHANNEL
