@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e560db6f-ba8b-4fd1-a236-6d70fb5ddd42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nodeactyl-beta/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nodeactyl-beta/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +95,10 @@
       <workItem from="1614433773490" duration="644000" />
       <workItem from="1614681040968" duration="38000" />
       <workItem from="1614786772258" duration="1232000" />
+      <workItem from="1614975167262" duration="442000" />
+      <workItem from="1615109588291" duration="1162000" />
+      <workItem from="1615116776018" duration="1002000" />
+      <workItem from="1615300494160" duration="594000" />
     </task>
     <servers />
   </component>

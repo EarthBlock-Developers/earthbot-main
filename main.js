@@ -9,7 +9,7 @@ const PREFIX = require('./settings').variables.PREFIX;
 const TOKEN = require('./settings').variables.TOKEN.DISCORD;
 const DATE = new Date();
 let service = require('./settings').variables.SERVICE;
-const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", require('./settings').variables.TOKEN.PTERODACTYL);
+//const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213/", require('./settings').variables.TOKEN.PTERODACTYL);
 
 //SAVE IMPORTANT VARIABLES TO CLIENT
 bot.PREFIX = PREFIX;
@@ -22,8 +22,12 @@ bot.on("ready", () => {
     //CACHE REACTION ROLE MESSAGE FROM #RULES
     bot.guilds.cache.get("740571881014558790").channels.cache.get("740572760782143573").messages.fetch("807923274729127957");
 
+    //SET STATUS
+    if(service) bot.user.setPresence({status: "idle", activity: {name: "WARTUNGSARBEITEN!", type: "PLAYING"}}).then(() => {  });
+    else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network | Prefix: " + PREFIX, type: "PLAYING" } }).then(() => {  });
+
     //START MINECRAFT STATS LOOP
-    minecraft_stats();
+    //minecraft_stats();
 
 });
 
@@ -46,7 +50,7 @@ bot.on("message", message => {
 
     }
 
-    if(service) {
+    if(service && message.content.toLowerCase().startsWith(PREFIX)) {
         let embed = new Discord.MessageEmbed()
             .setTitle("Wartungsarbeiten!")
             .setDescription("Aufgrund von Wartungsarbeiten ist der Bot temporär nicht verfügbar und ist auf wenige Features beschrängt!")
