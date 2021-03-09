@@ -6,13 +6,28 @@ const Pterodactyl = require('nodeactyl-beta');
 //INIT VARIABLES
 const bot = new Discord.Client();
 const PREFIX = require('./settings').variables.PREFIX;
-const TOKEN = require('./settings').variables.TOKEN.DISCORD;
+//const TOKEN = require('./settings').variables.TOKEN.DISCORD;
 const DATE = new Date();
 let service = require('./settings').variables.SERVICE;
-//const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213/", require('./settings').variables.TOKEN.PTERODACTYL);
+mc_server = new Pterodactyl.NodeactylClient("http://ptero.galaxycrow.de/", require('./settings').variables.TOKEN.PTERODACTYL);
+const readline = require("readline").createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
 
 //SAVE IMPORTANT VARIABLES TO CLIENT
 bot.PREFIX = PREFIX;
+
+//GET TOKEN
+
+readline.question("Bitte gebe den Discord Bot Token ein!", token => {
+    bot.login(token).then(r => {
+        console.log("Erfolgreich in Discord API eingeloggt... Bot wird gestartet!")
+    }).catch(() => {
+        console.log("Das ist kein funktionierender Bot Token oder es konnte keine Verbindung zur Discord API hergestellt werden...")
+        process.kill(0);
+    })
+})
 
 //START ROUTINE
 bot.on("ready", () => {
@@ -27,7 +42,7 @@ bot.on("ready", () => {
     else bot.user.setPresence({ status: "online", activity: { name: "auf EarthBlock Network | Prefix: " + PREFIX, type: "PLAYING" } }).then(() => {  });
 
     //START MINECRAFT STATS LOOP
-    //minecraft_stats();
+    minecraft_stats();
 
 });
 
@@ -157,7 +172,6 @@ function serviceOn(message) {
     let json = {
 
         TOKEN: {
-            DISCORD: "" + SETTINGS.variables.TOKEN.DISCORD,
             PTERODACTYL: "" + SETTINGS.variables.TOKEN.PTERODACTYL
         },
         SERVER_ID: SETTINGS.variables.SERVER_ID,
@@ -179,7 +193,6 @@ function serviceOff(message) {
     let json = {
 
         TOKEN: {
-            DISCORD: "" + SETTINGS.variables.TOKEN.DISCORD,
             PTERODACTYL: "" + SETTINGS.variables.TOKEN.PTERODACTYL
         },
         SERVER_ID: SETTINGS.variables.SERVER_ID,
@@ -363,7 +376,3 @@ function minecraft_stats() {
     }
 
 }
-
-
-//BOT LOGIN
-bot.login(TOKEN);

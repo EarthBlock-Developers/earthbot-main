@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const Pterodactyl = require("nodeactyl-beta");
 const SETTINGS = require("../settings");
-const mc_server = new Pterodactyl.NodeactylClient("http://45.88.110.213:8089", SETTINGS.variables.TOKEN.PTERODACTYL);
+const mc_server = new Pterodactyl.NodeactylClient("http://ptero.galaxycrow.de/", SETTINGS.variables.TOKEN.PTERODACTYL);
 
 //CODE THAT RUNS ON EVERY USAGE
 module.exports.run = async (msg, args, bot) => {

@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e560db6f-ba8b-4fd1-a236-6d70fb5ddd42" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/requires-packages.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/mccmd.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/mccmd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/minecraft.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/minecraft.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/status.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/status.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +64,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NODE ." type="NodeJSConfigurationType" path-to-node="node" path-to-js-file="main.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -98,7 +115,7 @@
       <workItem from="1614975167262" duration="442000" />
       <workItem from="1615109588291" duration="1162000" />
       <workItem from="1615116776018" duration="1002000" />
-      <workItem from="1615300494160" duration="594000" />
+      <workItem from="1615300494160" duration="1674000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,5 @@
+discord.js
+fs
+nodeactyl-beta
+axios
+readline
